@@ -27,7 +27,11 @@ class demo_api extends Controller
 
     public function show($id)
     {
-        return acounts::all()->where('id',$id);
+        return acounts::all()->where('id',$id)->orWhere('name','LIKE','%'.$id.'%')->get();
+        // return acounts::all()->where(function($re,$id){
+        //     $re->where('id',$id)
+        //         ->orWhere('name','LIKE','%'.$id.'%')->get();
+        // });
     }
    
 
